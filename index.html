@@ -14,11 +14,9 @@
         }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbfbfd; color: #1d1d1f; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* Apple Glass Panels */
         .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .glass-card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.3); border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         
-        /* Logo Gradient */
         .mountify-gradient { 
             background: linear-gradient(135deg, var(--mountify-teal) 0%, var(--mountify-blue) 50%, var(--mountify-magenta) 100%); 
             -webkit-background-clip: text; 
@@ -27,7 +25,6 @@
         
         .hero-title { font-size: clamp(3rem, 10vw, 6.5rem); line-height: 0.85; letter-spacing: -0.05em; }
 
-        /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -58,8 +55,11 @@
             <h1 class="reveal hero-title font-black mountify-gradient uppercase">PRECISION <br> MOUNTED.</h1>
             <p class="reveal max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-medium leading-relaxed">Northern New Jersey's elite specialist for Samsung Frame TVs, OLED Gallery, and invisible wire concealment.</p>
             
-            <div class="reveal pt-10">
+            <div class="reveal pt-10 flex flex-col md:flex-row gap-5 justify-center items-center">
                 <a href="#booking" class="btn-primary px-12 py-5 rounded-2xl font-bold text-sm shadow-xl inline-block">Secure Your Date</a>
+                <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Fully Insured</span>
+                </div>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
             <div class="glass-card p-10 reveal bg-white">
                 <div class="text-3xl mb-6">🏗️</div>
                 <h3 class="text-xl font-bold mb-2 uppercase text-gray-800">Secure</h3>
-                <p class="text-gray-500 text-sm italic">Heavy-duty mounting for screens up to 100" with insurance backing.</p>
+                <p class="text-gray-500 text-sm italic">Heavy-duty mounting for screens up to 100" with full coverage protection.</p>
             </div>
             <div class="glass-card p-10 reveal bg-white">
                 <div class="text-3xl mb-6">🏙️</div>
@@ -127,10 +127,9 @@
 
     <footer class="py-24 px-6 border-t border-gray-100 text-center bg-white">
         <div class="text-3xl font-black mountify-gradient mb-2 uppercase tracking-tighter">MOUNTIFY</div>
-        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-12">Mounted Right, Officially. NJHIC Registered.</p>
+        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-12">Mounted Right, Officially.</p>
         <div class="flex flex-col md:flex-row justify-center gap-10 text-gray-400 font-bold text-[9px] uppercase tracking-widest">
-            <span>NJHIC # PENDING</span>
-            <span>$500,000 Liability Insured</span>
+            <span>Fully Insured</span>
             <a href="mailto:info@mountifyco.com" class="hover:text-black transition uppercase tracking-widest">Email Support</a>
             <a href="https://www.instagram.com/mountifyofficially/" class="hover:text-black transition" target="_blank">Instagram</a>
         </div>
