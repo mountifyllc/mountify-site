@@ -10,31 +10,21 @@
         :root { --m-teal: #00B7BF; --m-blue: #3F1A60; --m-magenta: #E92C86; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbfbfd; color: #1d1d1f; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* 3D Glass Layering */
         .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.4s; }
         .glass-card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.3); border-radius: 2.5rem; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-        .glass-card:hover { transform: translateY(-10px) scale(1.02); background: rgba(255, 255, 255, 0.6); }
 
         .mountify-gradient { background: linear-gradient(135deg, var(--m-teal) 0%, var(--m-blue) 50%, var(--m-magenta) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Animation Triggers */
-        .reveal { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Parallax Hero Effect */
         .parallax-bg { transform: translateY(var(--scroll-offset, 0)); transition: transform 0.1s linear; }
-        
         .hero-title { font-size: clamp(2.5rem, 9vw, 6.5rem); line-height: 0.85; letter-spacing: -0.05em; }
         
         .btn-primary { background: linear-gradient(135deg, var(--m-teal), var(--m-blue)); color: white; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
         .btn-primary:hover { transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 20px 40px rgba(0, 183, 191, 0.3); }
 
-        /* Smooth Floating for Monty */
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
         .animate-float { animation: float 5s ease-in-out infinite; }
     </style>
 </head>
@@ -43,13 +33,13 @@
     <nav id="navbar" class="fixed w-full z-[100] glass-nav py-4 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-extrabold tracking-tighter mountify-gradient uppercase">MOUNTIFY</div>
-            <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            <div class="hidden lg:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
                 <a href="#services" class="hover:text-black transition">The Craft</a>
-                <a href="#pathos" class="hover:text-black transition">The Mission</a>
                 <a href="#meet-monty" class="hover:text-black transition">Monty!</a>
-                <a href="#quote" class="hover:text-black transition">Contact</a>
+                <a href="#quote" class="hover:text-black transition">Get Quote</a>
+                <a href="#booking" class="hover:text-black transition">Book Instantly</a>
             </div>
-            <a href="#quote" class="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-8 py-3 rounded-full hover:bg-gray-800 shadow-xl transition">Start Quote</a>
+            <a href="#booking" class="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-8 py-3 rounded-full hover:bg-gray-800 shadow-xl transition">Book Now</a>
         </div>
     </nav>
 
@@ -58,15 +48,13 @@
             <div class="absolute top-1/4 left-1/4 w-[700px] h-[700px] bg-cyan-100/40 rounded-full blur-[120px]"></div>
             <div class="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-100/40 rounded-full blur-[120px]"></div>
         </div>
-
         <div class="max-w-7xl mx-auto text-center space-y-10 relative z-10">
             <span class="reveal inline-block px-6 py-2 rounded-full bg-white shadow-md border border-gray-100 text-[10px] font-extrabold uppercase tracking-[0.4em] text-gray-400">Precision Integrated • NYC & NJ</span>
             <h1 class="reveal hero-title font-black mountify-gradient uppercase">YOUR SPACE,<br>REIMAGINED.</h1>
-            <p class="reveal max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-medium leading-relaxed">We don't just mount technology. We integrate it into your lifestyle with white-glove precision and an eye for art-gallery aesthetics.</p>
-            
+            <p class="reveal max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-medium leading-relaxed">Elite TV mounting and professional furniture assembly for New York and Northern New Jersey homes.</p>
             <div class="reveal pt-8 flex flex-col md:flex-row justify-center items-center gap-6">
-                <a href="#quote" class="btn-primary px-14 py-6 rounded-2xl font-bold text-sm shadow-2xl">Secure Your Installation</a>
-                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Fully Insured & Expert Certified</p>
+                <a href="#quote" class="btn-primary px-14 py-6 rounded-2xl font-bold text-sm shadow-2xl">Start Your Quote</a>
+                <a href="#booking" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-black transition">Or Book Instantly →</a>
             </div>
         </div>
     </section>
@@ -75,99 +63,90 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="reveal space-y-8">
                 <h2 class="text-5xl font-black tracking-tighter uppercase leading-[0.9]">From Clutter <br> to <span class="mountify-gradient">Sanctuary.</span></h2>
-                <p class="text-gray-500 text-lg">Your home should be your masterpiece. Why let tangled wires, heavy boxes, and crooked mounts ruin the vision? We handle the heavy lifting and the technical perfection so you can just... breathe.</p>
+                <p class="text-gray-500 text-lg">Your home should be your masterpiece. We handle the technical perfection—tangless wires, laser-leveled mounts, and expert assembly—so you can just... breathe.</p>
                 <div class="flex gap-6">
-                    <div class="glass-card p-6 flex-1 text-center">
-                        <p class="text-2xl font-black">4k+</p>
-                        <p class="text-[9px] uppercase font-bold text-gray-400">Jobs Perfected</p>
+                    <div class="glass-card p-6 flex-1 text-center border-m-teal/20">
+                        <p class="text-2xl font-black">Fully</p><p class="text-[9px] uppercase font-bold text-gray-400 tracking-widest">Insured</p>
                     </div>
-                    <div class="glass-card p-6 flex-1 text-center">
-                        <p class="text-2xl font-black">100%</p>
-                        <p class="text-[9px] uppercase font-bold text-gray-400">Stress Free</p>
+                    <div class="glass-card p-6 flex-1 text-center border-m-blue/20">
+                        <p class="text-2xl font-black">Same-Day</p><p class="text-[9px] uppercase font-bold text-gray-400 tracking-widest">Available</p>
                     </div>
                 </div>
             </div>
             <div class="reveal relative">
-                <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=2080&auto=format&fit=crop" class="rounded-[3rem] shadow-2xl border-[12px] border-white" alt="Luxury Living Room">
-                <div class="absolute -bottom-6 -right-6 glass-card p-8 bg-white/90 shadow-xl hidden lg:block">
-                    <p class="text-sm font-bold italic">"It feels like a whole new home."</p>
-                    <p class="text-[10px] uppercase font-bold text-m-teal mt-2">— Happy Client, Jersey City</p>
-                </div>
+                <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=2080&auto=format&fit=crop" class="rounded-[3rem] shadow-2xl border-[12px] border-white" alt="Sanctuary">
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-40 px-6 max-w-7xl mx-auto">
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="md:col-span-2 glass-card p-12 reveal min-h-[450px] flex flex-col justify-end relative overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition duration-1000" alt="TV">
+            <div class="md:col-span-2 glass-card p-12 reveal relative overflow-hidden group">
                 <div class="relative z-10">
-                    <span class="text-m-teal font-black text-xs uppercase tracking-widest">The Specialist</span>
-                    <h3 class="text-5xl font-black mt-4 mb-6 tracking-tight">Samsung Frame <br> & OLED Gallery</h3>
-                    <p class="text-gray-500 max-w-md">The gold standard of integration. Flush-to-wall mounting with zero visible footprint.</p>
+                    <span class="text-m-teal font-black text-xs uppercase tracking-widest">Specialist</span>
+                    <h3 class="text-5xl font-black mt-4 mb-6 tracking-tight">Samsung Frame <br> & Gallery OLED</h3>
+                    <p class="text-gray-500 max-w-md">Flush-to-wall mounting with flawless internal cable concealment.</p>
                 </div>
             </div>
-            <div class="glass-card p-12 reveal flex flex-col justify-end bg-[#1d1d1f] text-white overflow-hidden relative group">
-                <div class="relative z-10">
-                    <h3 class="text-3xl font-black mb-4">Furniture <br> Assembly</h3>
-                    <p class="text-gray-400 text-sm">IKEA, Wayfair, and RTA experts. We transform flat boxes into functional luxury.</p>
-                </div>
-            </div>
-            <div class="glass-card p-10 reveal">
-                <div class="text-3xl mb-6">🔨</div>
-                <h3 class="text-xl font-bold mb-2 uppercase">Custom Mounts</h3>
-                <p class="text-gray-500 text-sm italic">Brick, stone, or plaster. We mount where others say no.</p>
-            </div>
-            <div class="glass-card p-10 reveal">
-                <div class="text-3xl mb-6">🔌</div>
-                <h3 class="text-xl font-bold mb-2 uppercase">Wire Control</h3>
-                <p class="text-gray-500 text-sm italic">Invisible power relocation and HDMI routing.</p>
-            </div>
-            <div class="glass-card p-10 reveal">
-                <div class="text-3xl mb-6">🛡️</div>
-                <h3 class="text-xl font-bold mb-2 uppercase">Insured</h3>
-                <p class="text-gray-500 text-sm italic">Peace of mind for displays up to 100".</p>
+            <div class="glass-card p-12 reveal bg-[#1d1d1f] text-white">
+                <h3 class="text-3xl font-black mb-4">Furniture <br> Assembly</h3>
+                <p class="text-gray-400 text-sm">Expertly building IKEA, Wayfair, and RTA furniture so you don't have to.</p>
             </div>
         </div>
     </section>
 
     <section id="meet-monty" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="reveal glass-card p-12 flex flex-col md:flex-row items-center gap-16 border-magenta-500/10">
+        <div class="reveal glass-card p-12 flex flex-col md:flex-row items-center gap-16">
             <div class="animate-float flex-shrink-0 bg-gray-100 rounded-[3rem] p-6 shadow-inner">
                 <img src="IMG_2574.PNG" class="h-64 md:h-80 w-auto object-contain" alt="Monty">
             </div>
-            <div class="space-y-6">
+            <div class="space-y-6 text-center md:text-left">
                 <h2 class="text-5xl font-black mountify-gradient uppercase tracking-tighter">Meet Monty!</h2>
-                <p class="text-2xl font-medium text-gray-800 italic leading-relaxed">"Precision integrated with a playful spirit."</p>
-                <p class="text-lg text-gray-500 leading-relaxed">Monty ensures that while we take technology seriously, we never lose the human touch. He's the guardian of the Mountify standard—making sure your home is as fun as it is functional.</p>
+                <p class="text-xl font-medium text-gray-800 italic leading-relaxed">"Precision integrated with a playful spirit."</p>
+                <p class="text-lg text-gray-500">The official guardian of the Mountify standard. He makes sure your home is as fun as it is functional.</p>
             </div>
         </div>
     </section>
 
-    <section id="quote" class="py-40 px-6 max-w-4xl mx-auto">
+    <section id="quote" class="py-32 px-6 max-w-4xl mx-auto">
         <div class="reveal text-center mb-16 space-y-4">
-            <h2 class="text-6xl font-black mountify-gradient uppercase tracking-tighter">Ready to Begin?</h2>
-            <p class="text-gray-400 font-bold uppercase tracking-widest text-[11px]">Describe your vision. We’ll bring the tools.</p>
+            <h2 class="text-6xl font-black mountify-gradient uppercase tracking-tighter">Request a Quote</h2>
+            <p class="text-gray-400 font-bold uppercase tracking-widest text-[11px]">Describe your project. We'll send a custom estimate.</p>
         </div>
-        
-        <form name="quote-request" method="POST" data-netlify="true" class="reveal glass-card p-10 md:p-16 space-y-8 bg-white/90 shadow-2xl border-none">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <input type="text" name="name" placeholder="Full Name" required class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
-                <input type="email" name="email" placeholder="Email Address" required class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
-                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
-                <select name="service" class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
-                    <option>TV Mounting</option>
-                    <option>Furniture Assembly</option>
-                    <option>Art / Mirror Hanging</option>
-                    <option>Commercial Integration</option>
-                </select>
+        <form name="quote-request" method="POST" data-netlify="true" class="reveal glass-card p-10 md:p-16 space-y-6 bg-white shadow-2xl border-none">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" name="name" placeholder="Name" required class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
+                <input type="tel" name="phone" placeholder="Phone" required class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
             </div>
-            <textarea name="message" rows="4" placeholder="Tell us about the project (Wall type, TV size, location...)" class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal"></textarea>
-            <button type="submit" class="w-full btn-primary py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm">Send Request</button>
+            <select name="service" class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
+                <option>TV Mounting</option>
+                <option>Furniture Assembly</option>
+                <option>Art / Mirror Hanging</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Wall type, TV size, location details..." class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal"></textarea>
+            <button type="submit" class="w-full btn-primary py-5 rounded-xl font-black uppercase tracking-widest text-sm">Send Quote Request</button>
         </form>
     </section>
 
-    <footer class="py-24 px-6 text-center border-t border-gray-100 bg-white">
+    <section id="booking" class="py-32 px-6 bg-[#f5f5f7]">
+        <div class="max-w-4xl mx-auto text-center space-y-12">
+            <h2 class="reveal text-5xl font-black tracking-tighter uppercase mountify-gradient">Or Book Instantly</h2>
+            <div class="reveal glass-card p-4 md:p-8 bg-white/90 shadow-xl border-none">
+                <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+                <script type="text/javascript">
+                  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                  Cal("init", "15-minute-tv-mounting-consultation", {origin:"https://app.cal.com"});
+                  Cal.ns["15-minute-tv-mounting-consultation"]("inline", {
+                    elementOrSelector:"#my-cal-inline",
+                    config: {"layout":"month_view"},
+                    calLink: "giovanni-santos-q2udix/15-minute-tv-mounting-consultation",
+                  });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-24 px-6 text-center bg-white">
         <div class="text-3xl font-black mountify-gradient mb-4 uppercase tracking-tighter">MOUNTIFY</div>
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.5em] mb-12">Mounted Right, Officially.</p>
         <div class="flex flex-col md:flex-row justify-center gap-12 text-gray-400 font-bold text-[9px] uppercase tracking-widest">
@@ -179,25 +158,17 @@
 
     <script src="//code.tidio.co/jscbbs8jxlxqxsiy4p7q7yt9h6rav5sk.js" async></script>
     <script>
-        // Scroll Animation Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Parallax & Navbar Logic
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
             document.getElementById('hero-parallax').style.setProperty('--scroll-offset', scroll * 0.4 + 'px');
-            
             const nav = document.getElementById('navbar');
-            if (scroll > 50) {
-                nav.style.padding = '12px 24px';
-                nav.style.background = 'rgba(255,255,255,0.85)';
-            } else {
-                nav.style.padding = '24px';
-                nav.style.background = 'rgba(255,255,255,0.7)';
-            }
+            if (scroll > 50) { nav.style.padding = '12px 24px'; nav.style.background = 'rgba(255,255,255,0.85)'; } 
+            else { nav.style.padding = '24px'; nav.style.background = 'rgba(255,255,255,0.7)'; }
         });
     </script>
 </body>
