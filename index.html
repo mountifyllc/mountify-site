@@ -113,13 +113,18 @@
             <h2 class="text-6xl font-black mountify-gradient uppercase tracking-tighter">Request a Quote</h2>
             <p class="text-gray-400 font-bold uppercase tracking-widest text-[11px]">Describe your project. We'll send a custom estimate.</p>
         </div>
-        <form name="quote-request" method="POST" data-netlify="true" class="reveal glass-card p-10 md:p-16 space-y-6 bg-white shadow-2xl border-none">
+        
+        <form name="quote-request" method="POST" data-netlify="true" action="/?success=true" class="reveal glass-card p-10 md:p-16 space-y-6 bg-white shadow-2xl border-none">
+            <input type="hidden" name="form-name" value="quote-request" />
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="text" name="name" placeholder="Name" required class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
                 <input type="tel" name="phone" placeholder="Phone" required class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
             </div>
+            <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
             <select name="service" class="w-full p-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal">
                 <option>TV Mounting</option>
+                <option>Samsung Frame Installation</option>
                 <option>Furniture Assembly</option>
                 <option>Art / Mirror Hanging</option>
             </select>
@@ -132,7 +137,7 @@
         <div class="max-w-4xl mx-auto text-center space-y-12">
             <h2 class="reveal text-5xl font-black tracking-tighter uppercase mountify-gradient">Or Book Instantly</h2>
             <div class="reveal glass-card p-4 md:p-8 bg-white/90 shadow-xl border-none">
-                <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+                <div style="width:100%;height:100%;min-height:600px;overflow:scroll" id="my-cal-inline"></div>
                 <script type="text/javascript">
                   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
                   Cal("init", "15-minute-tv-mounting-consultation", {origin:"https://app.cal.com"});
@@ -148,11 +153,11 @@
 
     <footer class="py-24 px-6 text-center bg-white">
         <div class="text-3xl font-black mountify-gradient mb-4 uppercase tracking-tighter">MOUNTIFY</div>
-        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.5em] mb-12">Mounted Right, Officially.</p>
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.5em] mb-12">Precision Mounted. Fully Insured.</p>
         <div class="flex flex-col md:flex-row justify-center gap-12 text-gray-400 font-bold text-[9px] uppercase tracking-widest">
-            <a href="mailto:info@mountifyco.com" class="hover:text-black transition">Email</a>
+            <a href="mailto:info@mountifyco.com" class="hover:text-black transition">Email Support</a>
             <a href="https://www.instagram.com/mountifyofficially/" class="hover:text-black transition" target="_blank">Instagram</a>
-            <span>Serving Northern NJ & NYC</span>
+            <span>646-423-6401 • NJ & NYC</span>
         </div>
     </footer>
 
@@ -165,11 +170,17 @@
 
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
-            document.getElementById('hero-parallax').style.setProperty('--scroll-offset', scroll * 0.4 + 'px');
+            const parallax = document.getElementById('hero-parallax');
+            if(parallax) parallax.style.setProperty('--scroll-offset', scroll * 0.4 + 'px');
             const nav = document.getElementById('navbar');
             if (scroll > 50) { nav.style.padding = '12px 24px'; nav.style.background = 'rgba(255,255,255,0.85)'; } 
             else { nav.style.padding = '24px'; nav.style.background = 'rgba(255,255,255,0.7)'; }
         });
+
+        // Show a "Thank You" message if redirected after success
+        if (window.location.search.includes('success=true')) {
+            alert("Thank you! Your quote request has been sent to Monty. We'll be in touch shortly.");
+        }
     </script>
 </body>
 </html>
