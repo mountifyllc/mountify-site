@@ -46,6 +46,14 @@
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }
         .animate-float { animation: float 6s ease-in-out infinite; }
 
+        /* Caution Tape */
+        .caution-tape { 
+            background: repeating-linear-gradient(45deg, #fcd34d, #fcd34d 30px, #1d1d1f 30px, #1d1d1f 60px);
+            background-size: 85px 85px;
+            animation: moveTape 2s linear infinite;
+        }
+        @keyframes moveTape { 0% { background-position: 0 0; } 100% { background-position: 85px 0; } }
+
         /* Form Feedback */
         [data-fs-success] { display: none; background: #00B7BF; color: white; padding: 1.5rem; border-radius: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; text-align: center; box-shadow: 0 10px 20px rgba(0, 183, 191, 0.2); }
         [data-fs-error] { display: none; background: #ff4b4b; color: white; padding: 1.5rem; border-radius: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; text-align: center; }
@@ -58,9 +66,9 @@
             <div class="text-2xl font-black tracking-tighter mountify-gradient uppercase">MOUNTIFY</div>
             <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 <a href="#services" class="hover:text-black transition">The Craft</a>
+                <a href="#shop" class="hover:text-black transition">Supply</a>
                 <a href="#meet-monty" class="hover:text-black transition">Monty!</a>
                 <a href="#quote" class="hover:text-black transition">Get Quote</a>
-                <a href="#booking" class="hover:text-black transition">Book Instantly</a>
             </div>
             <a href="#booking" class="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-8 py-3.5 rounded-full hover:bg-gray-900 shadow-xl transition">Book Now</a>
         </div>
@@ -102,7 +110,7 @@
         </div>
     </section>
 
-    <section id="services" class="py-40 px-6 max-w-7xl mx-auto">
+    <section id="services" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div class="md:col-span-2 glass-card p-14 reveal relative overflow-hidden group">
                 <div class="relative z-10">
@@ -133,6 +141,26 @@
         </div>
     </section>
 
+    <section id="shop" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="reveal relative glass-card overflow-hidden border-m-magenta/20 p-0 shadow-xl">
+            <div class="w-full h-12 flex items-center justify-center font-black uppercase text-[11px] tracking-[0.4em] caution-tape shadow-lg relative z-20">
+                <span class="bg-black text-yellow-400 px-4 py-1 mx-2 rounded shadow">DO NOT PASS</span>
+                <span class="text-black font-extrabold px-2">UNDER CONSTRUCTION</span>
+                <span class="bg-black text-yellow-400 px-4 py-1 mx-2 rounded shadow hidden md:inline-block">DO NOT PASS</span>
+                <span class="text-black font-extrabold px-2 hidden md:inline-block">STORE COMING SOON</span>
+            </div>
+            
+            <div class="py-20 px-10 text-center space-y-6 relative z-10 bg-white/40">
+                <div class="text-7xl mb-4">🚧</div>
+                <h2 class="text-5xl font-black mountify-gradient uppercase tracking-tighter">Mountify Supply</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto font-medium">Our official online store is being built. Soon, you'll be able to order custom-manufactured mounts, concealed cable kits, and premium hardware directly from us.</p>
+                <div class="pt-6">
+                    <button disabled class="px-10 py-4 bg-gray-300 text-gray-500 rounded-full font-black uppercase tracking-[0.3em] text-xs cursor-not-allowed shadow-inner">Opening Soon</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="meet-monty" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="reveal glass-card p-16 flex flex-col md:flex-row items-center gap-20 border-magenta-500/10 bg-white/60">
             <div class="animate-float flex-shrink-0 bg-gray-50 rounded-[4rem] p-10 shadow-inner">
@@ -152,26 +180,105 @@
             <p class="text-gray-400 font-bold uppercase tracking-[0.3em] text-[11px]">Monty is ready. Tell us about your project.</p>
         </div>
         
-        <div class="reveal glass-card p-10 md:p-16 bg-white shadow-3xl border-none">
-            <div data-fs-success>Message sent! Monty is on the case. We'll be in touch shortly.</div>
+        <div class="reveal glass-card p-8 md:p-14 bg-white shadow-3xl border-none">
+            <div data-fs-success>Message sent! Mountify will be in contact soon... Monty is reviewing your estimate.</div>
             <div data-fs-error>Oops! Something went wrong. Please check your details.</div>
 
-            <form id="mountify-quote-form" class="space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" name="name" placeholder="Full Name" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all">
-                    <input type="tel" name="phone" placeholder="Phone Number" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all">
+            <form id="mountify-quote-form" class="space-y-6" enctype="multipart/form-data">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="first_name" placeholder="First Name" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                    <input type="text" name="last_name" placeholder="Last Name" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
                 </div>
-                <input type="email" name="email" placeholder="Email Address" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all">
-                <select name="service" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-400">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="email" name="email" placeholder="Email Address" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                    <input type="tel" name="phone" placeholder="Phone Number" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                </div>
+                <input type="text" name="company" placeholder="Company Name (Optional)" data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+
+                <div class="pt-4 border-t border-gray-100"></div>
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Job Location</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="street_address" placeholder="Street Address" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                    <input type="text" name="unit_apt" placeholder="Unit, Apt, Floor (Optional)" data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <input type="text" name="city" placeholder="City" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                    <input type="text" name="state" placeholder="State" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                    <input type="text" name="zip_code" placeholder="Zip Code" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700">
+                </div>
+
+                <div class="pt-4 border-t border-gray-100"></div>
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Service Details</h4>
+
+                <select name="service" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-500">
                     <option value="" disabled selected>What do you need done?</option>
                     <option>TV Mounting - Standard</option>
                     <option>Samsung Frame Installation</option>
                     <option>Furniture Assembly</option>
                     <option>Art / Mirror Hanging</option>
+                    <option>Option (Other - Please describe below)</option>
                 </select>
-                <textarea name="message" rows="4" placeholder="Wall type, TV size, location..." required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all"></textarea>
                 
-                <button type="submit" data-fs-submit-btn class="w-full btn-primary py-7 rounded-2xl font-black uppercase tracking-[0.3em] text-sm">SEND QUOTE REQUEST</button>
+                <textarea name="scope_of_work" rows="4" placeholder="Describe the scope of work... (Wall type, TV size, location, specific instructions)" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-700"></textarea>
+                
+                <div class="w-full p-6 rounded-2xl border-2 border-dashed border-gray-300 hover:border-m-teal bg-gray-50 transition-all text-center relative group">
+                    <p class="text-sm font-bold text-gray-600 mb-1">Attach Photos of Your Space/Equipment</p>
+                    <p class="text-xs text-gray-400 mb-4">(Optional but highly recommended. Up to 10 files allowed.)</p>
+                    <input type="file" name="attachments" multiple accept="image/*,video/*" data-fs-field class="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-xs file:font-black file:uppercase file:tracking-widest file:bg-m-teal/10 file:text-m-teal hover:file:bg-m-teal/20 cursor-pointer">
+                </div>
+
+                <div class="pt-4 border-t border-gray-100"></div>
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Scheduling</h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-2 mb-2">Best Day for Assessment</label>
+                        <input type="date" name="best_date" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-500">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-2 mb-2">Another Day that Works</label>
+                        <input type="date" name="backup_date" required data-fs-field class="w-full p-5 rounded-2xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-m-teal transition-all text-gray-500">
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">Preferred Arrival Time <span class="text-red-400">*</span></label>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="arrival_time" value="Anytime" required data-fs-field class="w-4 h-4 text-m-teal focus:ring-m-teal"> 
+                            <span class="text-sm text-gray-700 font-medium">Anytime</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="arrival_time" value="Morning" data-fs-field class="w-4 h-4 text-m-teal focus:ring-m-teal"> 
+                            <span class="text-sm text-gray-700 font-medium">Morning (9:30 AM - 11:30 AM)</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="arrival_time" value="Afternoon" data-fs-field class="w-4 h-4 text-m-teal focus:ring-m-teal"> 
+                            <span class="text-sm text-gray-700 font-medium">Afternoon (12:00 PM - 3:00 PM)</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="arrival_time" value="Evening" data-fs-field class="w-4 h-4 text-m-teal focus:ring-m-teal"> 
+                            <span class="text-sm text-gray-700 font-medium">Evening (3:00 PM - 5:00 PM)</span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer pt-2">
+                            <input type="radio" name="arrival_time" value="Custom" data-fs-field class="w-4 h-4 mt-1 text-m-teal focus:ring-m-teal"> 
+                            <span class="text-sm text-gray-700 font-medium leading-relaxed">Need an earlier/later time slot? Let us know in the scope of work, we may be able to accommodate!</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-2">
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <input type="checkbox" name="marketing_opt_in" data-fs-field checked class="w-5 h-5 mt-0.5 rounded text-m-teal focus:ring-m-teal cursor-pointer">
+                        <span class="text-xs text-gray-500 font-medium leading-relaxed group-hover:text-gray-700 transition">
+                            I'd like to receive marketing emails from Mountify LLC. Unsubscribe at any time.
+                        </span>
+                    </label>
+                </div>
+                
+                <button type="submit" data-fs-submit-btn class="w-full btn-primary py-7 mt-4 rounded-2xl font-black uppercase tracking-[0.3em] text-sm shadow-xl hover:shadow-2xl">SEND QUOTE REQUEST</button>
             </form>
         </div>
     </section>
@@ -179,7 +286,7 @@
     <section id="booking" class="py-32 px-6 bg-[#f5f5f7]">
         <div class="max-w-4xl mx-auto text-center space-y-12">
             <h2 class="reveal text-5xl font-black tracking-tighter uppercase mountify-gradient">Or Book Instantly</h2>
-            <div class="reveal glass-card p-4 md:p-10 bg-white/90 shadow-2xl border-none">
+            <div class="reveal glass-card p-4 md:p-10 bg-white/90 shadow-2xl border-none relative z-10">
                 <div style="width:100%;height:100%;min-height:700px;overflow:scroll" id="my-cal-inline"></div>
                 <script type="text/javascript">
                   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
